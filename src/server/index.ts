@@ -7,12 +7,19 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 
+const allPosts = [today, thisWeek, thisMonth]
+
 app.get("/posts", (req, res) => {
-  res.json([today, thisWeek, thisMonth])
+  res.json(allPosts)
 })
 
 app.post<{}, {}, Post>("/posts", (req, res) => {
-  res.json()
+  console.log('Server processing post...')
+  const post = {...req.body, id:(Math.random() * 100000).toFixed()}
+  // console.log('All posts before push: ', allPosts)
+  allPosts.push(post)
+  // console.log('All posts after push: ', allPosts)
+  res.json(post)
 })
 
 app.listen(8000, () => {
