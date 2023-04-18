@@ -1,5 +1,5 @@
 import  { defineStore } from "pinia"
-import { Post, today, thisWeek, thisMonth, TimelinePost } from "../posts"
+import { Post, TimelinePost } from "../posts"
 import { Period } from "../constants"
 import { DateTime } from "luxon"
 
@@ -26,9 +26,9 @@ export const usePosts = defineStore("posts", {
     },
 
     async fetchPosts() {
-      const res = await window.fetch("http://localhost:8000/posts")
+      const res = await window.fetch("/api/posts")
       const data = (await res.json()) as Post[]
-      // await delay()
+      await delay()
 
       let ids: string[] = []
       let all = new Map<string, Post>()
@@ -39,10 +39,11 @@ export const usePosts = defineStore("posts", {
       this.ids = ids
       this.all = all
     },
+
     createPost (post: TimelinePost) {
       const body = JSON.stringify({...post, created: post.created.toISO() })
       // console.log('Sending POST with body:', body)
-      return window.fetch("http://localhost:8000/posts", {
+      return window.fetch("/api/posts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

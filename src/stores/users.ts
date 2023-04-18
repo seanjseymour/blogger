@@ -6,7 +6,7 @@ export const useUsers = defineStore("users", {
     createUser (newUser: NewUser) {
       const body = JSON.stringify(newUser)
       // console.log('Sending POST with body:', body)
-      return window.fetch("http://localhost:8000/users", {
+      return window.fetch("/api/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
