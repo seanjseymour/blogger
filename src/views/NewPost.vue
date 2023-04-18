@@ -2,7 +2,6 @@
 import { DateTime } from 'luxon'
 import PostWriter from '../components/PostWriter.vue'
 import { TimelinePost } from '../posts'
-import { Http2SecureServer } from 'http2';
 
 const post: TimelinePost = {
 id: "-1",

@@ -28,7 +28,7 @@ export const usePosts = defineStore("posts", {
     async fetchPosts() {
       const res = await window.fetch("http://localhost:8000/posts")
       const data = (await res.json()) as Post[]
-      await delay()
+      // await delay()
 
       let ids: string[] = []
       let all = new Map<string, Post>()
