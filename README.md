@@ -14,3 +14,8 @@ Since TypeScript cannot handle type information for `.vue` imports, they are shi
 2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
 
 You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+
+## Todo
+- Read up on Cross Site Request Forgery mitigation
+- Don't show errors on SignIn (add an additional prop to the user form component)
+- Show a loading / spinner in App.vue until authenticate is actually finished
