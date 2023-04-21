@@ -18,12 +18,19 @@ app.get("/posts", (req, res) => {
   res.json(allPosts);
 });
 
+app.put<{}, {}, Post>("/posts", (req, res) => {
+  const index = allPosts.findIndex(x => x.id === req.body.id)
+  if (index === -1) {
+    throw Error(`Post with id ${req.body.id} was not found`)
+  }
+  const existingPost = allPosts[index]
+  allPosts[index] = {...existingPost, ...req.body}
+  res.json(allPosts[index])
+});
+
 app.post<{}, {}, Post>("/posts", (req, res) => {
-  // console.log('Server processing post...')
   const post = { ...req.body, id: (Math.random() * 100000).toFixed() };
-  // console.log('All posts before push: ', allPosts)
   allPosts.push(post);
-  // console.log('All posts after push: ', allPosts)
   res.json(post);
 });
 

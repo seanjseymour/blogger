@@ -19,3 +19,4 @@ You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/
 - Read up on Cross Site Request Forgery mitigation
 - Don't show errors on SignIn (add an additional prop to the user form component)
 - Show a loading / spinner in App.vue until authenticate is actually finished
+- Write up an explanation about how everything works
